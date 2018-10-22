@@ -1,0 +1,191 @@
+# First part: just label , descriptions and aliases.
+
+"Award/":
+  "label":
+    "value":
+      "Award"
+    "language":
+      "en"
+  "description":
+    "value":
+      "Award description?Award"
+    "language":
+      "en"          
+  "aliases":
+    "values":
+      "Award name in original language"
+    "language":
+      "en" # This is the language a description for the alias(es) will be set in.
+  "reconciliated_trust_unique_label_exists":
+    True
+    
+"Award currency/":
+  "label":
+    "value":
+      "Award currency"
+    "language":
+      "en"  
+    "language":
+      "en"
+  "description":
+    "value":
+      "Currency description?Currency unit"
+    "language":
+      "en"          
+  "force_creation_new_if_other_exist_with_similar_label":
+    True
+      
+"Awarded by/":
+  "label":
+    "value":
+      "Awarded by"
+    "language":
+      "en"
+  "description":
+    "value":
+      "Brief description of awarding entity"
+    "language":
+      "en"    
+  "force_creation_new_if_other_exist_with_similar_label":
+    True
+  "reconciliated_trust_unique_label_exists":
+    True
+         
+"Winner name/": 
+  "label":
+    "value":
+      "Winner name"
+    "language":
+      "en"  
+#  "description": # Wikibase will refuse to write if more than one item have same label and description, even if their core_props are different. And in our fake dataset we have imagined two John Nash with different "Wikidata ID" so they should be treated as different items.
+#    "value":
+#      "Winner description?Academic"
+#    "language":
+#      "en"  
+  "core_props": {"P122": {"datatype": "external-id","name": "Wikidata item ID","domain": ["researcher"],"core_id": true}}
+  "statements":
+    -
+      "statement_model":
+        "external-id": 
+          "ID": 
+            {"prop_nr":  "Wikidata item ID"}   
+               
+"Affiliation at the time/Recall at the time!":
+  "label":
+    "value":
+      "Affiliation at the time"
+    "language":
+      "en"
+  "description":
+    "value":
+      "Affiliation institute brief description"
+    "language":
+      "en"    
+
+"Database/":
+  "label":
+    "value":
+      "Database?AcaPrizesDatabase"
+    "language":
+      "en"  
+  "description":
+    "value":
+      "Database description?Database containing data on prizes awarded to academics."
+    "language":
+      "en"
+  "reconciliated_trust_unique_label_exists":
+    True
+    
+"Database curator/":
+  "label":
+    "value":
+      "Database curator?AcaPrizes"
+    "language":
+      "en"  
+  "description":
+    "value":
+      "Database curator description?Association for the recognition of academic work."
+    "language":
+      "en"
+  "force_creation_new_if_other_exist_with_similar_label":
+    True
+  "reconciliated_trust_unique_label_exists":
+    True
+        
+# Second part: model for the statements we want to write.
+
+"Winner name item Qid":  
+  "statements":
+    -
+      "statement_model":
+        "item": 
+          "Award item Qid": 
+            {"prop_nr":  "award received"}
+      "qualifiers_models":
+        "time": 
+          "Date award": 
+            {"prop_nr":  "point in time", "is_qualifier": True, "precision": 9} # precision: 9 means "year", see https://www.mediawiki.org/wiki/Wikibase/DataModel#Dates_and_times
+        "item":
+          "Affiliation at the time item Qid": 
+            {"prop_nr":  "affiliation", "is_qualifier": True}
+        "quantity":
+          "Award monetary value":  
+#            {"prop_nr": "economic value", "find_qid": False, "is_qualifier": True, "unit": "Award currency item Qid?Q1619"} # Also valid writing.
+#            "default_args":          
+#              {"prop_nr": "economic value", "find_qid": False, "is_qualifier": True, "unit": "Award currency item Qid?Q1619"} #{"prop_nr": "economic value", "find_qid": True, "is_qualifier": True} # Also valid writings.          
+            "default_args":          
+              {"prop_nr": "economic value", "find_qid": False, "is_qualifier": True} #{"prop_nr": "economic value", "find_qid": True, "is_qualifier": True}
+            "instance_mutable_args":
+              {"unit": "Award currency item Qid"} #{"unit": "Award currency"}         
+      "references_models":
+        - 
+          "url": 
+            "Reference url?www.acaprizes.org/prizes.csv": 
+              {"prop_nr": "reference URL", "is_reference": True}
+          "time": 
+            "Retrieved?+2018-08-18T00:00:00Z": 
+              {"prop_nr":  "retrieved", "is_reference": True, "precision": 11}
+          "item":
+            "Database item Qid":
+              {"prop_nr":  "stated in", "is_reference": True}
+            "Database curator item Qid":
+               {"prop_nr":  "curator", "is_reference": True}
+              
+"Award item Qid":  
+  "statements":
+    -
+      "statement_model":
+        "time": 
+          "Award foundation time": 
+            {"prop_nr":  "inception", "precision": 9}
+      "references_models":
+        - 
+          "url": 
+            "Reference url?www.acaprizes.org/prizes.csv": 
+              {"prop_nr": "reference URL", "is_reference": True}
+          "time": 
+            "Retrieved?+2018-08-18T00:00:00Z": 
+              {"prop_nr":  "retrieved", "is_reference": True, "precision": 11}
+          "item":
+            "Database item Qid":
+              {"prop_nr":  "stated in", "is_reference": True}
+            "Database curator item Qid":
+               {"prop_nr":  "curator", "is_reference": True}
+    - 
+      "statement_model":
+        "item":
+          "Awarded by item Qid": 
+            {"prop_nr":  "conferred by"}
+      "references_models":
+        - 
+          "url": 
+            "Reference url?www.acaprizes.org/prizes.csv": 
+              {"prop_nr": "reference URL", "is_reference": True}
+          "time": 
+            "Retrieved?+2018-08-18T00:00:00Z": 
+              {"prop_nr":  "retrieved", "is_reference": True, "precision": 11}
+          "item":
+            "Database item Qid":
+              {"prop_nr":  "stated in", "is_reference": True}
+            "Database curator item Qid":
+               {"prop_nr":  "curator", "is_reference": True}
