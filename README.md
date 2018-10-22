@@ -146,7 +146,7 @@ These parameters can be passed to the program by listing them in a configuration
     
         * `user`: username with bot account 
         * `password`: password of the bot
-        * `mediawiki_api_url`: the url of the Mediawiki API for the Wikibase instance of interest, for example http://orig.wmflabs.org/w/api.php
+        * `mediawiki_api_url`: the url of the Mediawiki API for the Wikibase instance of interest, for example http://blabla.wmflabs.org/w/api.php
         * `sparql_endpoint_url`: the URL of the sparql query service of the Wikibase in question
         * `wiki_language`: the language of the Wikibase in questions; the language codes are available [here](#https://www.wikidata.org/wiki/Help:Wikimedia_language_codes/lists/all)
    
