@@ -39,7 +39,7 @@ setup(
         #'resources': ['example_connection_integrator_config_Orig.ini', 'orig_swiss_grants_model.yaml', 'origBasicItemsModel.yaml'],
     },
     data_files=[('.',['LICENSE.txt', 'README.md','ExampleBlock.png']),
-                ('resources',['resources/example_connection_integrator_config_full.ini', 'resources/example_connection_integrator_config_prizes.ini', 'resources/prizes_model.yaml', 'resources/origBasicItemsModel.yaml', 'resources/prizes_model.yaml', 'resources/prizes.csv'])],
+                ('resources',['resources/example_connection_integrator_config_full.ini', 'resources/prizes_model.yaml', 'resources/prizes.csv'])],
     exclude_package_data={
         '': ['*.csv', '*.pkl', '*.txt', '*.ini', '*.yaml', '*.pyOLD'],
         },

@@ -22,7 +22,7 @@ git clone https://github.com/dcodings/
 and then run *setup.py* as
 
 ```
-cd WikibaseUniversalBot
+cd Wikibase_Universal_Bot
 
 python setup.py install
 
