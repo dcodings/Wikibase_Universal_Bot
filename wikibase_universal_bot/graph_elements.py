@@ -97,14 +97,14 @@ class GraphElements(object):
 
         
         try:
-            item_names =self.focus_node_name_coln["value_default"]
+            item_names =self.focus_node_name_coln["value_default"].copy()
         except KeyError:
             try:
                 item_names =helpers.make_list(dataframe_row[self.focus_node_name_coln["column_name"]])
             except KeyError:   
                 item_names = [""]    
         try:
-            wd_item_ids =self.focus_node_id_coln["value_default"]
+            wd_item_ids =self.focus_node_id_coln["value_default"].copy()
             wd_item_ids *= len(item_names)
         except KeyError:
             try:
@@ -112,7 +112,7 @@ class GraphElements(object):
             except KeyError:   
                 wd_item_ids = [""]
         try:
-            labels =self.focus_node_label_coln["value_default"]
+            labels =self.focus_node_label_coln["value_default"].copy()
             labels *= len(item_names)
         except KeyError:
             try:
@@ -122,7 +122,7 @@ class GraphElements(object):
         if not wd_item_ids[0] and not item_names[0] and labels[0]:
             item_names = labels
         try:
-            descriptions =self.focus_node_description_coln["value_default"]
+            descriptions = self.focus_node_description_coln["value_default"].copy()
             descriptions *= len(item_names)
         except KeyError:
             try:
