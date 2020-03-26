@@ -1,0 +1,303 @@
+# Datamodel for wikibase/wikidata virus gene base on https://www.wikidata.org/wiki/EntitySchema:E165 .
+# See also the bot draft https://github.com/SuLab/scheduled-bots/blob/SARS-CoV-2/scheduled_bots/geneprotein/VirusGeneBot.py .
+
+# DESCRIPTIONS ADN LABELLINGS.
+
+"Gene/noid:XX":
+  "label":
+    "value":
+      "gene_name"
+    "language":
+      "en"  
+  "description":
+    "value":
+      "scientific_name"
+    "language":
+      "en"
+#  "aliases":
+#    "values":
+#      "Currency aliases"
+#    "language":
+#      "en"
+         
+"CDS/noid:QXX":
+  "label":
+    "value":
+      "CDS label" # "cds"="_geneid"+"_product" from GenBank file.
+    "language":
+      "en"  
+  "description":
+    "value":
+      "CDS note" # field /note in CDS from GenBank file.
+    "language":
+      "en" 
+#  "aliases":
+#    "values":
+#      "taxon_scientific_name"
+#    "language":
+#      "en"     
+
+"Taxon/noid:QXX":
+  "label":
+    "value":
+      "taxon_scientific_name"
+    "language":
+      "en"  
+  "description":
+    "value":
+      "Taxon description?strain of virus" # Why have you put this as taxon description on line 124?
+    "language":
+      "en" 
+  "aliases":
+    "values":
+      "taxon_scientific_name"
+    "language":
+      "en"     
+
+# STATEMENTS.
+
+"Gene item Qid":
+  "statements":
+    - 
+      "statement_model":
+        "item":
+          "gene_class?Q7187":
+            {"prop_nr": "instance of"}  
+      "references_models":
+        - 
+          "time": 
+            "Retrieved": 
+              {"prop_nr":  "retrieved", "is_reference": True}
+#          "url": 
+#            "Reference url": 
+#              {"prop_nr": "reference url", "is_reference": True}
+          "item":
+            "Database item Qid?Q20641742":
+              {"prop_nr":  "stated in", "is_reference": True}
+#            "Curator item Qid":
+#               {"prop_nr":  "curator", "is_reference": True}            
+    - 
+      "statement_model":
+        "item":
+          "Specific_gene_type":
+            {"prop_nr": "instance of"}  
+      "references_models":
+        - 
+          "time": 
+            "Retrieved": 
+              {"prop_nr":  "retrieved", "is_reference": True}
+          "item":
+            "Database item Qid?Q20641742":
+              {"prop_nr":  "stated in", "is_reference": True}
+    - 
+      "statement_model":
+        "item":
+          "Ortholog":
+            {"prop_nr": "ortholog"}  
+      "references_models":
+        - 
+          "time": 
+            "Retrieved": 
+              {"prop_nr":  "retrieved", "is_reference": True}
+          "item":
+            "Database item Qid?Q20641742":
+              {"prop_nr":  "stated in", "is_reference": True}
+    - 
+      "statement_model":
+        "item":
+          "Encodes":
+            {"prop_nr": "encodes"}  
+      "references_models":
+        - 
+          "time": 
+            "Retrieved": 
+              {"prop_nr":  "retrieved", "is_reference": True}
+          "item":
+            "Database item Qid?Q20641742":
+              {"prop_nr":  "stated in", "is_reference": True}
+    - 
+      "statement_model":
+        "item":
+          "DNA location":
+            {"prop_nr": "strand orientation"}  
+      "references_models":
+        - 
+          "time": 
+            "Retrieved": 
+              {"prop_nr":  "retrieved", "is_reference": True}
+          "item":
+            "Database item Qid?Q20641742":
+              {"prop_nr":  "stated in", "is_reference": True}
+    - 
+      "statement_model":
+        "string":
+          "Genomic start position":
+            {"prop_nr": "genomic start"}  
+      "references_models":
+        - 
+          "time": 
+            "Retrieved": 
+              {"prop_nr":  "retrieved", "is_reference": True}
+          "item":
+            "Database item Qid?Q20641742":
+              {"prop_nr":  "stated in", "is_reference": True}
+    - 
+      "statement_model":
+        "string":
+          "Genomic end position":
+            {"prop_nr": "genomic end"}  
+      "references_models":
+        - 
+          "time": 
+            "Retrieved": 
+              {"prop_nr":  "retrieved", "is_reference": True}
+          "item":
+            "Database item Qid?Q20641742":
+              {"prop_nr":  "stated in", "is_reference": True}
+    - 
+      "statement_model":
+        "item":
+          "Gene found in taxon":
+            {"prop_nr": "found in taxon"}  
+      "references_models":
+        - 
+          "time": 
+            "Retrieved": 
+              {"prop_nr":  "retrieved", "is_reference": True}
+          "item":
+            "Database item Qid?Q20641742":
+              {"prop_nr":  "stated in", "is_reference": True}
+    - 
+      "statement_model":
+        "external-id": 
+          "Entrez Gene ID": 
+            {"prop_nr": "Entrez Gene ID"}
+      "references_models":
+        - 
+          "time": 
+            "Retrieved": 
+              {"prop_nr":  "retrieved", "is_reference": True}      
+          "item":
+            "Database item Qid?Q20641742":
+              {"prop_nr":  "stated in", "is_reference": True}
+    - 
+      "statement_model":
+        "external-id": 
+          "Ensembl Gene ID": 
+            {"prop_nr": "Ensembl Gene ID"}
+      "references_models":
+        - 
+          "time": 
+            "Retrieved": 
+              {"prop_nr":  "retrieved", "is_reference": True}      
+          "item":
+            "Database item Qid?Q20641742":
+              {"prop_nr":  "stated in", "is_reference": True}
+    - 
+      "statement_model":
+        "external-id": 
+          "NCBI Locus Tag":             
+            "default_args":          
+              {"prop_nr": "NCBI Locus tag"} 
+            "instance_mutable_args":
+              {"onesubject_manyobjects": True}
+      "references_models":
+        - 
+          "time": 
+            "Retrieved": 
+              {"prop_nr":  "retrieved", "is_reference": True}      
+          "item":
+            "Database item Qid?Q20641742":
+              {"prop_nr":  "stated in", "is_reference": True}
+
+"CDS item Qid":
+  "statements":
+    - 
+      "statement_model":
+        "item":
+          "cds_class?Q3780824":
+            {"prop_nr": "instance of"}  
+      "references_models":
+        - 
+          "time": 
+            "Retrieved": 
+              {"prop_nr":  "retrieved", "is_reference": True}
+#          "url": 
+#            "Reference url": 
+#              {"prop_nr": "reference url", "is_reference": True}
+          "item":
+            "Database item Qid?Q20641742":
+              {"prop_nr":  "stated in", "is_reference": True}
+#            "Curator item Qid":
+#               {"prop_nr":  "curator", "is_reference": True}            
+    - 
+      "statement_model":
+        "item":
+          "CDS found in taxon":
+            {"prop_nr": "found in taxon"}  
+      "references_models":
+        - 
+          "time": 
+            "Retrieved": 
+              {"prop_nr":  "retrieved", "is_reference": True}
+          "item":
+            "Database item Qid?Q20641742":
+              {"prop_nr":  "stated in", "is_reference": True}
+    - 
+      "statement_model":
+        "external-id": 
+          "CDS RefSeq Protein ID":             
+            "default_args":          
+              {"prop_nr": "RefSeq Protein ID"} 
+            "instance_mutable_args":
+              {"onesubject_manyobjects": True}
+      "references_models":
+        - 
+          "time": 
+            "Retrieved": 
+              {"prop_nr":  "retrieved", "is_reference": True}      
+          "item":
+            "Database item Qid?Q20641742":
+              {"prop_nr":  "stated in", "is_reference": True}
+                            
+"Taxon item Qid":
+  "statements":
+    - 
+      "statement_model":
+        "item":
+          "taxon_class?Q3780824":
+            {"prop_nr": "instance of"}  
+      "references_models":
+        - 
+          "time": 
+            "Retrieved": 
+              {"prop_nr":  "retrieved", "is_reference": True}
+          "item":
+            "Database item Qid?Q13711410":
+              {"prop_nr":  "stated in", "is_reference": True}
+    - 
+      "statement_model":
+        "external-id": 
+          "NCBI_Taxonomy_ID": 
+            {"prop_nr": "NCBI Taxonomy ID"}
+      "references_models":
+        - 
+          "time": 
+            "Retrieved": 
+              {"prop_nr":  "retrieved", "is_reference": True}      
+          "item":
+            "Database item Qid?Q13711410":
+              {"prop_nr":  "stated in", "is_reference": True}
+    - 
+      "statement_model":
+        "string": 
+          "Taxon_name": 
+            {"prop_nr": "taxon name"}
+      "references_models":
+        - 
+          "time": 
+            "Retrieved": 
+              {"prop_nr":  "retrieved", "is_reference": True}      
+          "item":
+            "Database item Qid?Q13711410":
+              {"prop_nr":  "stated in", "is_reference": True}
