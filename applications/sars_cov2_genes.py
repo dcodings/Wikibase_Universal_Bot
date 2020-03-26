@@ -16,9 +16,7 @@ def main(csv_data_filename,
          configuration_config_file
          ):
 
-    package_root_fold = os.path.abspath(os.path.join(__file__, os.pardir+"\\"+os.pardir))
-    print(package_root_fold)
-    
+        
     dataframe = pd.read_csv(csv_data_filename, sep=";")
     
     dataframe["Winner name"] = dataframe["Winner name"].str.split("/")
