@@ -9,21 +9,22 @@ import os
 
 import wikibase_universal_bot.wikibase_universal_bot as wikibase_universal_bot
 
-def create_data
 
 def main(csv_data_filename,
          yaml_model_filename,
          configuration_config_file
          ):
 
-        
+    """
+    Function that writes SARS-COV2 gene data to Wikipedia or other Wikibase instance
+    (need to update the configuration ini file) the data modeled in the yaml file.
+    
+    This version uses a csv file but the data dataframe can be created also directly 
+    using the data fetcher scripts in this code directory. 
+    """    
     dataframe = pd.read_csv(csv_data_filename, sep=";")
     
-    dataframe["Winner name"] = dataframe["Winner name"].str.split("/")
     
-    dataframe["ID"] = dataframe["ID"].str.split("/")
-    
-    dataframe["Date award"] = dataframe["Date award"].str.split("/")
     
     print(dataframe.loc[0])
     
@@ -47,3 +48,8 @@ if __name__ == '__main__':
     print(csv_data_filename)
     print(yaml_model_filename)
     print(configuration_config_file)
+    
+    main(csv_data_filename,
+         yaml_model_filename,
+         configuration_config_file
+         )
